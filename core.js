@@ -121,7 +121,7 @@
   App.start = async function () {
     try {
       const names = ['players', 'lab', 'warroom', 'method', 'meta', 'simbase'];
-      const got = await Promise.all(names.map(n => fetch('data/' + n + '.json').then(r => { if (!r.ok) throw new Error(n + ' ' + r.status); return r.json(); })));
+      const got = await Promise.all(names.map(n => fetch(n + '.json').then(r => { if (!r.ok) throw new Error(n + ' ' + r.status); return r.json(); })));
       names.forEach((n, i) => { App.DB[n] = got[i]; });
     } catch (e) {
       console.error(e);
